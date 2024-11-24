@@ -77,14 +77,14 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
       <div className={`${styles.cost} mr-10`}>
         <p className={`text ${styles.text} mr-2`}>{price}</p>
         <CurrencyIcon type='primary' />
-      </div>
+      </div>{' '}
       <Button
         htmlType='button'
         type='primary'
         size='large'
         children='Оформить заказ'
         onClick={onOrderClick}
-      />
+      />{' '}
     </div>
 
     {orderRequest && (
