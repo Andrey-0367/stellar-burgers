@@ -14,7 +14,6 @@ export const OrderInfo: FC = () => {
     ingredientsSelectors.getIngredientState
   );
   const { orderData } = useAppSelector(orderSelections.selectOrderState);
-
   useEffect(() => {
     fetchOrderByNumber(number);
   }, []);
@@ -28,7 +27,6 @@ export const OrderInfo: FC = () => {
     type TIngredientsWithCount = {
       [key: string]: TIngredient & { count: number };
     };
-
     const ingredientsInfo = orderData.ingredients.reduce(
       (acc: TIngredientsWithCount, item) => {
         if (!acc[item]) {
@@ -64,6 +62,6 @@ export const OrderInfo: FC = () => {
   if (!orderInfo) {
     return <Preloader />;
   }
-
+  console.log(orderInfo.status);
   return <OrderInfoUI orderInfo={orderInfo} />;
 };

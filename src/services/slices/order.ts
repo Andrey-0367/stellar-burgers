@@ -7,14 +7,12 @@ type TOrderState = {
   orders: TOrder[];
   orderData: TOrder | null;
   requestStatus: RequestStatus;
-  responseOrder: null;
 };
 
 export const initialState: TOrderState = {
   orders: [],
   orderData: null,
-  requestStatus: RequestStatus.Idle,
-  responseOrder: null
+  requestStatus: RequestStatus.Idle
 };
 
 export const orderSlice = createSlice({

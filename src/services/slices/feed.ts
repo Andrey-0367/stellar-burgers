@@ -2,6 +2,7 @@ import { RequestStatus, TOrder } from '@utils-types';
 import { createSlice } from '@reduxjs/toolkit';
 import { FEED_SLICE_NAME } from './slicesName';
 import { fetchGetFeeds } from '../thunk/feed';
+import { TOrderResponse } from '@api';
 
 type TFeedState = {
   orders: TOrder[];
