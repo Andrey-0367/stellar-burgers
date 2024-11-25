@@ -18,6 +18,7 @@ import {
   Route,
   Routes,
   useLocation,
+  useMatch,
   useNavigate
 } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -33,6 +34,9 @@ function App() {
   const background = location.state?.background;
   const navigate = useNavigate();
   const handleCloseModal = () => navigate(-1);
+  const profileMatch = useMatch('/profile/orders/:number')?.params.number;
+  const feedMatch = useMatch('/feed/:number')?.params.number;
+  const orderNumber = profileMatch || feedMatch;
   useEffect(() => {
     fetchIngredients();
     fetchUser()
@@ -96,13 +100,42 @@ function App() {
           }
         />
         <Route path='*' element={<NotFound404 />} />
-        <Route path='/feed/:number' element={<OrderInfo />} />
-        <Route path='/ingredients/:id' element={<IngredientDetails />} />
+        <Route
+          path='/feed/:number'
+          element={
+            <div className={styles.detailPageWrap}>
+              <h1 className={`text text_type_main-large${styles.detailHeader}`}>
+                Информация о заказе #
+                {orderNumber && orderNumber.padStart(6, '0')}
+              </h1>
+              <OrderInfo />
+            </div>
+          }
+        />
+        <Route
+          path='/ingredients/:id'
+          element={
+            <div className={styles.detailPageWrap}>
+              <h1 className={`text text_type_main-large${styles.detailHeader}`}>
+                Детали ингредиента
+              </h1>
+              <IngredientDetails />
+            </div>
+          }
+        />
         <Route
           path='/profile/orders/:number'
           element={
             <ProtectedRoute>
-              <OrderInfo />
+              {' '}
+              <div className={styles.detailPageWrap}>
+                <h1
+                  className={`text text_type_main-large${styles.detailHeader}`}
+                >
+                  Заказ #{orderNumber && orderNumber.padStart(6, '0')}
+                </h1>
+                <OrderInfo />
+              </div>
             </ProtectedRoute>
           }
         />
