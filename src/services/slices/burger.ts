@@ -3,19 +3,19 @@ import {
   TConstructorIngredient,
   TIngredient,
   TOrder
-} from '@utils-types';
+} from '../../utils/types';
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 import { BURGER_SLICE_NAME } from './slicesName';
 import { orderBurgers } from '../thunk/burger';
 
-type TBurgerState = {
+export type TBurgerState = {
   data: TConstructorIngredient[];
   bun: TConstructorIngredient | null;
   orderModalData: TOrder | null;
   requestStatus: RequestStatus;
 };
 
-const initialState: TBurgerState = {
+export const initialState: TBurgerState = {
   data: [],
   bun: null,
   orderModalData: null,

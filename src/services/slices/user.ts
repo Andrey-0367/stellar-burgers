@@ -1,4 +1,4 @@
-import { RequestStatus, TUser } from '@utils-types';
+import { RequestStatus, TUser } from '../../utils/types';
 import { createSlice } from '@reduxjs/toolkit';
 import { USER_SLICE_NAME } from './slicesName';
 import {
@@ -15,7 +15,7 @@ export interface UserState {
   isUserCheck: boolean;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   data: null,
   requestStatus: RequestStatus.Idle,
   isUserCheck: false

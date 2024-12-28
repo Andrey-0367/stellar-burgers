@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getOrderByNumberApi, getOrdersApi, TOrderResponse } from '@api';
+import { getOrderByNumberApi, getOrdersApi } from '../../utils/burger-api';
 import { ORDER_SLICE_NAME } from '../slices/slicesName';
 
 export const fetchOrderByNumber = createAsyncThunk(
