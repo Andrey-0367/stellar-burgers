@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { INGREDIENTS_SLICE_NAME } from './slicesName';
-import { RequestStatus, TIngredient } from '@utils-types';
+import { RequestStatus, TIngredient } from '../../utils/types';
 import { fetchIngredients } from '../thunk/ingredients';
 
 export interface IngredientsState {
@@ -8,7 +8,7 @@ export interface IngredientsState {
   requestStatus: RequestStatus;
 }
 
-const initialState: IngredientsState = {
+export const initialState: IngredientsState = {
   ingredients: [],
   requestStatus: RequestStatus.Idle
 };

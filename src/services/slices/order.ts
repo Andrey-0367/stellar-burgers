@@ -1,4 +1,4 @@
-import { RequestStatus, TOrder } from '@utils-types';
+import { RequestStatus, TOrder } from '../../utils/types';
 import { createSlice } from '@reduxjs/toolkit';
 import { ORDER_SLICE_NAME } from './slicesName';
 import { fetchOrderByNumber, fetchOrdersAll } from '../thunk/order';

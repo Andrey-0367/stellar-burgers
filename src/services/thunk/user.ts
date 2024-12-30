@@ -8,7 +8,7 @@ import {
   TRegisterData,
   TUserResponse,
   updateUserApi
-} from '@api';
+} from '../../utils/burger-api';
 import { deleteCookie, setCookie } from '../../utils/cookie';
 import { USER_SLICE_NAME } from '../slices/slicesName';
 import { createAppAsyncThunk, useActionCreators } from '../hooks';

@@ -1,8 +1,7 @@
-import { RequestStatus, TOrder } from '@utils-types';
+import { RequestStatus, TOrder } from '../../utils/types';
 import { createSlice } from '@reduxjs/toolkit';
 import { FEED_SLICE_NAME } from './slicesName';
 import { fetchGetFeeds } from '../thunk/feed';
-import { TOrderResponse } from '@api';
 
 type TFeedState = {
   orders: TOrder[];
@@ -48,3 +47,4 @@ export const feedActions = {
 };
 export const feedSelectors = feedSlice.selectors;
 export default feedSlice.reducer;
+export const reducer = feedSlice.reducer;
