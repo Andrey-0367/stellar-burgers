@@ -2,8 +2,10 @@ const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const production = process.env.BURGER_API_URL === 'production';
 
 module.exports = {
+  mode: 'production',
   entry: path.resolve(__dirname, './src/index.tsx'),
   module: {
     rules: [
@@ -82,8 +84,12 @@ module.exports = {
     }
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, './dist'), //путь куда будет собираться наш проект
+    filename: production
+      ? 'static/scripts/[name].[contenthash].js'
+      : 'static/scripts/[name].js', // имя нашего бандла
+    publicPath: '/',
+    chunkFilename: 'static/scripts/[name].[contenthash].bundle.js'
   },
   devServer: {
     static: path.join(__dirname, './dist'),
