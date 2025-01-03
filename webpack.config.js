@@ -1,9 +1,12 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
+const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  mode: 'production',
+  devtool: false,
   entry: path.resolve(__dirname, './src/index.tsx'),
   module: {
     rules: [
@@ -54,7 +57,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new Dotenv()
+    new webpack.EnvironmentPlugin({
+      PUBLIC_PATH: null, // значение по умолчанию null, если переменная process.env.PUBLIC_PATH не передана
+      NODE_ENV: 'development' // значение по умолчанию 'development', если переменная process.env.NODE_ENV не передана
+    })
   ],
   resolve: {
     extensions: [
@@ -82,8 +88,12 @@ module.exports = {
     }
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, '..', './dist'), // путь, по которому будет собираться наш проект
+    filename: production
+      ? 'static/scripts/[name].[contenthash].js'
+      : 'static/scripts/[name].js', // имя нашего бандла
+    publicPath: process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : '/', // указываем путь, который будет добавляться перед подключением файлов
+    chunkFilename: 'static/scripts/[name].[contenthash].bundle.js'
   },
   devServer: {
     static: path.join(__dirname, './dist'),
