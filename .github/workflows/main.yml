@@ -14,7 +14,7 @@ permissions:
   id-token: write # Разрешаем использовать GITHUB_TOKEN
   
 env:
-  PUBLIC_PATH: /stellar-burgers/
+  BURGER_API_URL: /stellar-burgers/
 jobs: # Секция jobs определяет этапы процесса
  
   deploy:  # Создаётся одна задача deploy, имя может быть любым
