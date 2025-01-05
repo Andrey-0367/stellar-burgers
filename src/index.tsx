@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter
-        basename={process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : '/'}
+        basename={process.env.BURGER_API_URL ? process.env.BURGER_API_URL : '/'}
       >
         <App />
       </BrowserRouter>

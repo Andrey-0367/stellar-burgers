@@ -130,6 +130,7 @@ describe('проверяем доступность приложения', funct
       cy.contains('64164').should('not.exist');
       cy.contains('Выберите булки').should('exist');
       cy.contains('Выберите начинку').should('exist');
+      cy.contains('John Lennon').should('not.exist');
     });
   });
 });

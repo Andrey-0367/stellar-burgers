@@ -1,13 +1,14 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
+
 const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  mode: 'production',
-  devtool: false,
   entry: path.resolve(__dirname, './src/index.tsx'),
+  mode: 'production',
   module: {
     rules: [
       {
@@ -57,8 +58,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
+    // new Dotenv({
+    //   path: './.env'
+    // }),
     new webpack.EnvironmentPlugin({
-      PUBLIC_PATH: null, // значение по умолчанию null, если переменная process.env.PUBLIC_PATH не передана
+      BURGER_API_URL: null, // значение по умолчанию null, если переменная process.env.BURGER_API_URL не передана
       NODE_ENV: 'development' // значение по умолчанию 'development', если переменная process.env.NODE_ENV не передана
     })
   ],

@@ -14,7 +14,6 @@
     "@types/uuid": "^9.0.1",
     "@zlden/react-developer-burger-ui-components": "^1.15.0",
     "clsx": "^2.0.0",
-    "dotenv": "^16.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.4.3",
@@ -88,7 +87,7 @@
     "url-loader": "^4.1.1"
   },
   "scripts": {
-    "start": "webpack serve --mode=development --env env=dev",
+    "start": "webpack serve --mode=development",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
@@ -96,6 +95,7 @@
     "format": "prettier ./src --write",
     "cypress:open": "cypress open",
     "test": "jest",
+    "deploy": "gh-pages -d dist",
     "build": "webpack --config webpack.config.js --env env=prod"
   },
   "eslintConfig": {
