@@ -2,8 +2,20 @@ const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { DefinePlugin } = require('webpack');
 
-module.exports = {
+require('dotenv').config({
+  path: path.join(
+    process.cwd(),
+    process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env'
+  )
+});
+const isProduction = process.env.NODE_ENV === 'production';
+
+const stylesHandler = MiniCssExtractPlugin.loader;
+
+const config = {
   entry: path.resolve(__dirname, './src/index.tsx'),
   module: {
     rules: [
@@ -54,7 +66,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new Dotenv()
+    new MiniCssExtractPlugin(),
+    new DefinePlugin({
+      'process.env.DEVELOPMENT': !isProduction,
+      'process.env.BURGER_API_URL': JSON.stringify(
+        process.env.BURGER_API_URL ?? ''
+      )
+    })
   ],
   resolve: {
     extensions: [
@@ -83,8 +101,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js',
-    publicPath: '/public/'
+    filename: 'bundle.js'
   },
   devServer: {
     static: path.join(__dirname, './dist'),
@@ -92,4 +109,12 @@ module.exports = {
     historyApiFallback: true,
     port: 4000
   }
+};
+module.exports = () => {
+  if (isProduction) {
+    config.mode = 'production';
+  } else {
+    config.mode = 'development';
+  }
+  return config;
 };
