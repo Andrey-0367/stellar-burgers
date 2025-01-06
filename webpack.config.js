@@ -8,7 +8,7 @@ const { DefinePlugin } = require('webpack');
 require('dotenv').config({
   path: path.join(
     process.cwd(),
-    process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env'
+    process.env.BURGER_API_URL ? `.env.${process.env.BURGER_API_URL}` : '.env'
   )
 });
 const isProduction = process.env.NODE_ENV === 'production';
