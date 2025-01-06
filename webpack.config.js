@@ -10,6 +10,8 @@ require('dotenv').config({
 });
 const isProduction = process.env.NODE_ENV === 'production';
 
+const PUBLIC_PATH = isProduction ? process.env.PUBLIC_PATH : '/';
+
 const config = {
   entry: path.resolve(__dirname, './src/index.tsx'),
   module: {
@@ -66,7 +68,8 @@ const config = {
       'process.env.DEVELOPMENT': !isProduction,
       'process.env.BURGER_API_URL': JSON.stringify(
         process.env.BURGER_API_URL ?? ''
-      )
+      ),
+      'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH ?? '')
     })
   ],
   resolve: {
@@ -96,7 +99,8 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: PUBLIC_PATH
   },
   devServer: {
     static: path.join(__dirname, './dist'),
