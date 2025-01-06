@@ -11,9 +11,7 @@ const root = ReactDOMClient.createRoot(container!);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter
-        basename={process.env.BURGER_API_URL ? process.env.BURGER_API_URL : '/'}
-      >
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>

@@ -96,7 +96,7 @@
     "cypress:open": "cypress open",
     "test": "jest",
     "deploy": "gh-pages -d dist",
-    "build": "webpack --config webpack.config.js --env env=prod"
+    "build": "webpack --config webpack.config.js --mode=production"
   },
   "eslintConfig": {
     "extends": [
