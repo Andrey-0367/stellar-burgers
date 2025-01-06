@@ -14,7 +14,6 @@ permissions:
   id-token: write # Разрешаем использовать GITHUB_TOKEN
   
 env:
-  BURGER_API_URL: https://norma.nomoreparties.space/api
   PUBLIC_PATH: stellar-burgers
 jobs: # Секция jobs определяет этапы процесса
  
