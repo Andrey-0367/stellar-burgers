@@ -6,14 +6,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { DefinePlugin } = require('webpack');
 
 require('dotenv').config({
-  path: path.join(
-    process.cwd(),
-    process.env.BURGER_API_URL ? `.env.${process.env.BURGER_API_URL}` : '.env'
-  )
+  path: path.join(process.cwd(), '.env')
 });
 const isProduction = process.env.NODE_ENV === 'production';
-
-const stylesHandler = MiniCssExtractPlugin.loader;
 
 const config = {
   entry: path.resolve(__dirname, './src/index.tsx'),
