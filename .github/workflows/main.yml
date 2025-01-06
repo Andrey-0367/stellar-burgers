@@ -15,6 +15,7 @@ permissions:
   
 env:
   BURGER_API_URL: https://norma.nomoreparties.space/api
+  PUBLIC_PATH: stellar-burgers
 jobs: # Секция jobs определяет этапы процесса
  
   deploy:  # Создаётся одна задача deploy, имя может быть любым
