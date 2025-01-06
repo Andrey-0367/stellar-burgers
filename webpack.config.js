@@ -8,9 +8,10 @@ const { DefinePlugin } = require('webpack');
 require('dotenv').config({
   path: path.join(process.cwd(), '.env')
 });
-const isProduction = process.env.NODE_ENV === 'production';
-
+const isProduction = process.env.PUBLIC_PATH === 'production';
+console.log(process.env.PUBLIC_PATH, 777777777777);
 const PUBLIC_PATH = isProduction ? process.env.PUBLIC_PATH : '/';
+console.log(PUBLIC_PATH, 333333333);
 
 const config = {
   entry: path.resolve(__dirname, './src/index.tsx'),
