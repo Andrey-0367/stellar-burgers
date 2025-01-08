@@ -40,13 +40,4 @@ jobs: # Секция jobs определяет этапы процесса
           path: './dist' # Путь до папки, где лежит сборка, в нашем случае Webpack собирает в папку dist, данные берутся из предыдущего шага Build
       - name: Deploy to GitHub Pages # Публикация артефактов на GitHub Pages с помощью готового actions
         uses: actions/deploy-pages@v4
-  send_message:
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      - name: Send message
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Деплой stellar-burgers успешно выполнен!!!
+
