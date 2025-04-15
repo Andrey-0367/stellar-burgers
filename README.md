@@ -15,4 +15,4 @@
 ## Важно:
 
 Для корректной работы запросов к серверу необходимо добавить переменную BURGER_API_URL в окружение. Сама ссылка находится в файле `.env.example`.
-Ссылка https://andrey-0367.github.io/stellar-burgers/
+Ссылка на page https://andrey-0367.github.io/stellar-burgers/
